@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+
 @Getter
 @Setter
 @Entity
@@ -20,12 +22,13 @@ public class Cuenta {
     @Enumerated(EnumType.STRING)
     private TipoCuenta tipoCuenta;
 
-    private double saldoInicial;
+    @Column(nullable = false, precision = 15, scale = 2)
+    private BigDecimal saldoInicial;
+
     private boolean estado;
 
-    @Setter
     @ManyToOne
-    @JoinColumn(name = "cliente_id", nullable = false)
+    @JoinColumn(name = "clienteId", nullable = false)
     private Cliente cliente;
 
 }

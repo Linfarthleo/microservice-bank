@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class HomeController {
     @GetMapping("/hello")
     public String helloWorld() {
-        return "¡Hola, el backend está funcionando correctamente!";
+        return "¡Holaaaa!, el backend está funcionando correctamente!";
     }
 }

@@ -1,6 +1,6 @@
 package com.bank.microservice.entities;
 
 public enum TipoCuenta {
-    AHORRO,
+    AHORROS,
     CORRIENTE
 }

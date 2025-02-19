@@ -1,29 +1,43 @@
 package com.bank.microservice.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "movimientos")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Movimiento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
-    private String fecha;
+    @Column(nullable = false)
+    private LocalDateTime fecha;
 
     @Enumerated(EnumType.STRING)
     private TipoMovimiento tipoMovimiento;
 
-    private double valor;
-    private double saldoDisponible;
+    @Column(nullable = false, precision = 15, scale = 2)
+    private BigDecimal valor;
+
+    @Column(nullable = false, precision = 15, scale = 2)
+    private BigDecimal saldoInicial;
+
+    @Column(nullable = false, precision = 15, scale = 2)
+    private BigDecimal saldoDisponible;
 
     @ManyToOne
-    @JoinColumn(name = "cuenta_id", nullable = false)
+    @JoinColumn(name = "cuentaId", nullable = false)
     private Cuenta cuenta;
 
 }

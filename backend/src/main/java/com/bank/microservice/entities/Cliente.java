@@ -1,18 +1,19 @@
 package com.bank.microservice.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.*;
 
+@Setter
+@Getter
 @Entity
 @Table(name = "clientes")
 public class Cliente extends Persona{
 
     @Column(unique = true, nullable = false)
-    private String clienteId;
+    private String username;
 
     @Column(nullable = false)
-    private String contraseña;
+    private String password;
 
     @Column(nullable = false)
     private boolean estado;
