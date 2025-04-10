@@ -4,19 +4,26 @@ import { Observable } from 'rxjs';
 import { Cliente } from '../models/cliente.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
+  
 export class ClienteService {
   private baseUrl = 'http://localhost:8080/api/clientes';
 
   constructor(private http: HttpClient) { }
 
-  getClientes(): Observable<Cliente[]> {
+
+
+  obtenerClientes(): Observable<Cliente[]> {
     return this.http.get<Cliente[]>(this.baseUrl);
   }
 
   crearCliente(cliente: Cliente): Observable<Cliente> {
       return this.http.post<Cliente>(this.baseUrl, cliente);
+  }
+
+  verificarUsername(username: string): Observable<boolean>{
+    return this.http.get<boolean>(`${this.baseUrl}/existe-username/${username}`)
   }
   
   obtenerClientePorId(id: number): Observable<Cliente> {

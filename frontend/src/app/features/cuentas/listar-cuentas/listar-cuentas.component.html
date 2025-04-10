@@ -1,0 +1,46 @@
+<div class="container">
+  <h2>Lista de Cuentas</h2> 
+
+   <div class="boton-derecha">
+    <button (click)="irACrearCuenta()">+ Nueva Cuenta</button>
+  </div>
+  <!-- Búsqueda Rápida --> 
+  <input 
+    type="text" 
+    placeholder="Buscar por numero de cuenta o nombre de la persona" 
+    [(ngModel)]="filtro" 
+    class="busqueda" 
+  /> 
+
+  <!-- Tabla de Cuentas --> 
+  <table> 
+    <thead>
+      <tr> 
+        <th>Numero de cuenta</th> 
+        <th>Tipo</th> 
+        <th>Saldo Inicial</th> 
+        <th>Cliente</th> 
+        <th>Estado</th> 
+      </tr> 
+    </thead> 
+    <tbody> 
+
+      <tr *ngFor="let cuenta of filtrarCuentas()"> 
+        <td>{{ cuenta.numeroCuenta }}</td> 
+        <td>{{ cuenta.tipoCuenta }}</td> 
+        <td>{{ cuenta.saldoInicial }}</td> 
+        <td>{{ cuenta.cliente?.nombre }}</td> 
+        <td> 
+          <span [class.activo]="cuenta.estado" [class.inactivo]="!cuenta.estado"> 
+            {{ cuenta.estado ? 'Activo' : 'Inactivo' }} 
+          </span> 
+        </td> 
+      </tr> 
+    </tbody> 
+  </table> 
+
+   <div *ngIf="filtrarCuentas().length === 0"> 
+    <p class="sin-registros">No se encontraron cuentas.</p> 
+  </div> 
+
+</div> 

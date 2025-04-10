@@ -10,11 +10,19 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/cuentas")
 @RequiredArgsConstructor
 public class CuentaController {
+
     private final CuentaService cuentaService;
+
+    @GetMapping
+    public ResponseEntity<List<Cuenta>> obtenerTodos(){
+        List<Cuenta> cuentas = cuentaService.obtenerTodos();
+        return cuentas.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(cuentas);
+    }
 
     @GetMapping("/cliente/{clienteId}")
     public ResponseEntity<List<Cuenta>> obtenerPorClienteId(@PathVariable Long clienteId){

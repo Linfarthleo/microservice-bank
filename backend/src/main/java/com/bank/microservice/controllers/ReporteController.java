@@ -5,15 +5,17 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/reportes")
+@RequestMapping("api/reportes")
 @RequiredArgsConstructor
 public class ReporteController {
     private final ReporteService reporteService;
 
-    @GetMapping("/api/json")
+    @GetMapping("/json")
     public ResponseEntity<?> generarReporteJson(@RequestParam Long clienteId,
                                                 @RequestParam LocalDateTime inicio,
                                                 @RequestParam LocalDateTime fin){
@@ -22,8 +24,11 @@ public class ReporteController {
 
     @GetMapping("/pdf")
     public ResponseEntity<byte[]> generarReportePDF(@RequestParam Long clienteId,
-                                                @RequestParam LocalDateTime inicio,
-                                                @RequestParam LocalDateTime fin){
-        return reporteService.generarReportePdf(clienteId,inicio,fin);
+                                                    @RequestParam String inicio,
+                                                    @RequestParam String fin){
+        LocalDateTime inicioDateTime = LocalDate.parse(inicio).atStartOfDay();
+        LocalDateTime finDateTime = LocalDate.parse(fin).atTime(23, 59, 59);
+        return reporteService.generarReportePdf(clienteId, inicioDateTime, finDateTime);
     }
+
 }

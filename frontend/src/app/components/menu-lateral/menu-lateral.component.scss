@@ -1,0 +1,56 @@
+.menu-lateral{
+    width: 250px;
+    height: 100vh;
+    background: white;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    transition: width 0.3s ease-in-out;
+    overflow: hidden;
+
+    nav{
+        margin-top: 20px;
+        ul{
+            list-style: none;
+            padding: 0;
+            li{
+                margin: 15px 0;
+                a{
+                    text-decoration: none;
+                    color:#0F265C;
+                    font-size: 18px;
+                    display: block;
+                    padding: 10px;
+                    transition: background 0.3s;
+
+                    &:hover, &.activo{
+                        background: #FBDB04;
+                        border-radius: 5px;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.toggle-btn{
+    background: transparent;
+    border: none;
+    color: #0F265C;
+    font-size: 24px;
+    position: absolute;
+    top:10px;
+    left: 10px;
+    cursor: pointer;
+}
+
+.menu-lateral.cerrado{
+    width: 45px;
+    nav ul li a{
+        text-align: center;
+        font-size: 0;
+    }
+}

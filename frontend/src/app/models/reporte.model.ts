@@ -6,5 +6,4 @@ export interface Reporte {
   estado: boolean;
   valorMovimiento: number;
   saldoDisponible: number;
-  saldoInicial: number;
 }

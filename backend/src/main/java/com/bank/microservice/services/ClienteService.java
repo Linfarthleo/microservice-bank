@@ -59,4 +59,7 @@ public class ClienteService {
         clienteRepository.deleteById(id);
     }
 
+    public boolean existeUsername(String username) {
+        return clienteRepository.existsByUsername(username);
+    }
 }

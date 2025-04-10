@@ -1,0 +1,44 @@
+.container{
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.form-group{
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+input, select{
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button{
+    background-color: #FBDB04;
+    color: #0F265C;
+    padding: 10px;
+    border: none;
+    cursor:pointer;
+    width: 50%;
+    border-radius: 8px;
+}
+
+button:disabled{
+    background-color: gray;
+    color: #ccc;
+}
+
+.error{
+    color:red;
+    font-size: 12px;
+}
+
+.mensaje-error{
+    color: red;
+    margin-top: 10px;
+}

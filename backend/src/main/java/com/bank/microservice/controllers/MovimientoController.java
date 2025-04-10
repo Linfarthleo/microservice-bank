@@ -13,11 +13,18 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/movimientos")
 @RequiredArgsConstructor
 public class MovimientoController {
     private final MovimientoService movimientoService;
+
+    @GetMapping
+    public ResponseEntity<List<Movimiento>> obtenerTodos(){
+        List<Movimiento> movimientos = movimientoService.obtenerTodos();
+        return movimientos.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(movimientos);
+    }
 
     @GetMapping("/cuenta/{cuentaId}")
     public ResponseEntity<List<ReporteDTO>> obtenerMovimientosPorClienteIdYFechas(@PathVariable Long cuentaId,

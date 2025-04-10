@@ -1,0 +1,85 @@
+<div class="container"> 
+
+  <h2>Generar Reporte de Movimientos</h2> 
+
+ 
+
+  <!-- Selección del Cliente --> 
+
+  <div class="form-group"> 
+
+    <label for="cliente">Seleccione un Cliente:</label> 
+
+    <select id="cliente" [(ngModel)]="clienteSeleccionado" required> 
+
+      <option [ngValue]="null">-- Seleccione --</option> 
+
+      <option *ngFor="let cliente of clientes" [ngValue]="cliente.id"> 
+
+        {{ cliente.nombre }} 
+
+      </option> 
+
+    </select> 
+
+  </div> 
+
+ 
+
+  <!-- Selección de Fecha de Inicio --> 
+
+  <div class="form-group"> 
+
+    <label for="fechaInicio">Fecha de Inicio:</label> 
+
+    <input 
+
+      id="fechaInicio" 
+
+      type="date" 
+
+      [(ngModel)]="fechaInicio" 
+
+      name="fechaInicio" 
+
+      required 
+
+    /> 
+
+  </div> 
+
+ 
+
+  <!-- Selección de Fecha de Fin --> 
+
+  <div class="form-group"> 
+
+    <label for="fechaFin">Fecha de Fin:</label> 
+
+    <input 
+
+      id="fechaFin" 
+
+      type="date" 
+
+      [(ngModel)]="fechaFin" 
+
+      name="fechaFin" 
+
+      required 
+
+    /> 
+
+  </div> 
+
+ 
+
+  <!-- Botón para Generar Reporte --> 
+
+  <button (click)="generarReporte()" [disabled]="!formularioValido()"> 
+
+    Generar Reporte 
+
+  </button> 
+
+</div> 

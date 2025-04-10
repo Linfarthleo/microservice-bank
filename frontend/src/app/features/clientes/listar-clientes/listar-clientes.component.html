@@ -1,1 +1,48 @@
-<p>listar-clientes works!</p>
+<div class="container">
+  <h2>Lista de Clientes</h2> 
+
+  <div class="boton-derecha">
+    <button (click)="irACrearCliente()">+ Nuevo Cliente</button>
+  </div>
+ 
+  <!-- 🔍 Búsqueda Rápida --> 
+  <input 
+    type="text" 
+    placeholder="Buscar por nombre ó identificación" 
+    [(ngModel)]="filtro" 
+    class="busqueda" 
+  /> 
+
+  
+  <!-- Tabla de Clientes --> 
+  <table> 
+    <thead>
+      <tr> 
+        <th>Nombre</th> 
+        <th>Identificación</th> 
+        <th>Dirección</th> 
+        <th>Teléfono</th> 
+        <th>Estado</th> 
+      </tr> 
+    </thead> 
+    <tbody> 
+
+      <tr *ngFor="let cliente of filtrarClientes()"> 
+        <td>{{ cliente.nombre }}</td> 
+        <td>{{ cliente.identificacion }}</td> 
+        <td>{{ cliente.direccion }}</td> 
+        <td>{{ cliente.telefono }}</td> 
+        <td> 
+          <span [class.activo]="cliente.estado" [class.inactivo]="!cliente.estado"> 
+            {{ cliente.estado ? 'Activo' : 'Inactivo' }} 
+          </span> 
+        </td> 
+      </tr> 
+    </tbody> 
+  </table> 
+
+   <div *ngIf="filtrarClientes().length === 0"> 
+    <p class="sin-registros">No se encontraron clientes.</p> 
+  </div> 
+
+</div> 

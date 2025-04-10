@@ -16,6 +16,10 @@ public class CuentaService {
     private final CuentaRepository cuentaRepository;
     private final ClienteRepository clienteRepository;
 
+    public List<Cuenta> obtenerTodos(){
+        return cuentaRepository.findAll();
+    }
+
     public List<Cuenta> obtenerPorClienteId(Long clienteId){
         return cuentaRepository.findByClienteId(clienteId);
     }

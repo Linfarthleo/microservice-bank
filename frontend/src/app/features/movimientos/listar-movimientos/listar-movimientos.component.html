@@ -1,0 +1,46 @@
+<div class="container">
+  <h2>Lista de Movimientos</h2> 
+
+ <div class="boton-derecha">
+    <button (click)="irACrearMovimiento()">+ Nuevo Movimiento</button>
+  </div>
+  <!-- Búsqueda Rápida --> 
+  <input 
+    type="text" 
+    placeholder="Buscar por nombre de la persona" 
+    [(ngModel)]="filtro" 
+    class="busqueda" 
+  /> 
+
+  <!-- Tabla de Cuentas --> 
+  <table> 
+    <thead>
+      <tr> 
+        <th>Fecha</th> 
+        <th>Cliente</th> 
+        <th>Numero de cuenta</th> 
+        <th>Tipo</th> 
+        <th>Saldo Inicial</th> 
+        <th>Movimiento</th>
+        <th>Saldo Disponible</th>
+      </tr> 
+    </thead> 
+    <tbody> 
+
+      <tr *ngFor="let movimiento of filtrarMovimientos()"> 
+        <td>{{ movimiento.fecha | date: 'dd/MM/yyyy HH:mm' }}</td> 
+        <td>{{ movimiento.cuenta?.cliente?.nombre }}</td> 
+        <td>{{ movimiento.cuenta?.numeroCuenta }}</td> 
+        <td>{{ movimiento.tipoMovimiento }}</td>
+        <td>{{ movimiento.saldoInicial }}</td> 
+        <td>{{ movimiento.valor }}</td> 
+        <td>{{ movimiento.saldoDisponible }}</td> 
+      </tr> 
+    </tbody> 
+  </table> 
+
+   <div *ngIf="filtrarMovimientos().length === 0"> 
+    <p class="sin-registros">No se encontraron movimientos.</p> 
+  </div> 
+
+</div> 

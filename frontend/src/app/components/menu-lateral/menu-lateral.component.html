@@ -1,0 +1,14 @@
+<div class="menu-lateral" [class.cerrado]="!menuAbierto">
+    <div>
+        <button class="toggle-btn" (click)="toggleMenu()">☰ Menú</button>
+        <div>-</div>
+    </div>
+    <nav>
+        <ul>
+            <li><a [routerLink]="'/clientes'" routerLinkActive="activo">Clientes</a></li>
+            <li><a [routerLink]="'/cuentas'" routerLinkActive="activo">Cuentas</a></li>
+            <li><a [routerLink]="'/movimientos'" routerLinkActive="activo">Movimientos</a></li>
+            <li><a [routerLink]="'/reportes'" routerLinkActive="activo">Reportes</a></li>
+        </ul>
+    </nav>
+</div>

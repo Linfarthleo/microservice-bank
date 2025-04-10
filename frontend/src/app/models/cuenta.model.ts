@@ -1,8 +1,16 @@
+export interface Cliente {
+    id: number;
+    nombre: string;
+}
+
 export interface Cuenta {
     id?: number;
     numeroCuenta: string;
-    tipo: string;
+    tipoCuenta: string;
     saldoInicial: number;
     estado: boolean;
-    username: string;
+    clienteId?: number;
+    cliente?: Cliente;
 }
+
+

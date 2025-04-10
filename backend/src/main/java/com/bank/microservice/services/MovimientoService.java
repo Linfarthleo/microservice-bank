@@ -82,4 +82,8 @@ public class MovimientoService {
     public void eliminarMovimiento(Long id){
         movimientoRepository.deleteById(id);
     }
+
+    public List<Movimiento> obtenerTodos() {
+        return movimientoRepository.findAll();
+    }
 }

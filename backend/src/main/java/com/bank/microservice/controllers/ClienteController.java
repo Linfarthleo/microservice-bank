@@ -10,16 +10,24 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/clientes")
 @RequiredArgsConstructor
 public class ClienteController {
+
     private final ClienteService clienteService;
 
     @GetMapping
     public ResponseEntity<List<Cliente>> obtenerTodos(){
         List<Cliente> clientes = clienteService.obtenerTodos();
         return clientes.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(clientes);
+    }
+
+    @GetMapping("/existe-username/{username}")
+    public ResponseEntity<Boolean> verificarUsername(@PathVariable String username){
+        boolean existe = clienteService.existeUsername(username);
+        return ResponseEntity.ok(existe);
     }
 
     @GetMapping("/{id}")
@@ -46,4 +54,5 @@ public class ClienteController {
         clienteService.eliminarCliente(id);
         return ResponseEntity.noContent().build();
     }
+
 }
