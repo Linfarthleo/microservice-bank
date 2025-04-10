@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
-@RequestMapping("/movimientos")
+@RequestMapping("/api/movimientos")
 @RequiredArgsConstructor
 public class MovimientoController {
     private final MovimientoService movimientoService;

@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class ReporteController {
     private final ReporteService reporteService;
 
-    @GetMapping("/json")
+    @GetMapping("/api/json")
     public ResponseEntity<?> generarReporteJson(@RequestParam Long clienteId,
                                                 @RequestParam LocalDateTime inicio,
                                                 @RequestParam LocalDateTime fin){
